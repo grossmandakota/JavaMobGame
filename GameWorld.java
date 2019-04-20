@@ -14,7 +14,6 @@ public class GameWorld
     private Room entrance;
     private HashMap<String, MobBoss> hMapOfMB = new HashMap<String, MobBoss>();
     private HashMap<String, Room> hMapOfRooms = new HashMap<String, Room>();
-    private Room trigger;
     /**
      * Constructor for objects of class GameWorld
      */
@@ -23,8 +22,6 @@ public class GameWorld
     {
         entrance = createWorld();
         createMobBosses();
-        createWorld();
-        NotificationCenter.getInstance().addObserver("PlayerEnteredRoom",this ,"player");
     }
 
     public Room getEntrance()

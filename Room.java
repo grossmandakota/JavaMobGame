@@ -19,7 +19,7 @@ class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-
+    private boolean isPlayerHere;
     /**
      * Create a room described "description". Initially, it has no exits.
      * "description" is something like "in a kitchen" or "in an open court 
@@ -31,6 +31,18 @@ class Room
         exits = new HashMap<String, Room>();
     }
 
+    public void isPlayerInRoom(Player player)
+    {
+        if (this == player.getCurrentRoom()){
+            isPlayerHere = true;
+        }
+        
+        else
+        {
+            isPlayerHere = false;
+        }
+    }
+    
     /**
      * Define an exit from this room.
      */

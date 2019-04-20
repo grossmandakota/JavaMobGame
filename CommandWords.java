@@ -33,7 +33,7 @@ public class CommandWords
         commands.put(command.getName(), command);
         command = new WackCommand();
         commands.put(command.getName(), command);
-        command = new StealCommand();
+        command = new BuyCommand();
         commands.put(command.getName(), command);
         command = new ExtortCommand();
         commands.put(command.getName(), command);

@@ -96,32 +96,20 @@ class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-        boolean didWinGame = winGame(player);
-        boolean finished = didWinGame;
+
+        boolean finished = false;
         while(! finished) {
             Command command = parser.getCommand();
             if(command == null) {
                 System.out.println("I don't understand...");
             } else {
-                finished = command.execute(player);  // quit return true
-                //System.out.println("Respect " + player.getRespect() + "Money " + player.getMoney());
+                finished = command.execute(player);
+                System.out.println(player.getMoney());// quit return true
             }
         }
-        
         System.out.println("Thank you for playing.  Good bye.");
     }
 
-    public boolean winGame(Player player)
-    {
-        if(player.getOwnedDistricts().size() == 8)
-        {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    
     /**
      * Print out the opening message for the player.
      */
