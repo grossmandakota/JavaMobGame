@@ -1,22 +1,22 @@
 
 /**
- * Write a description of class BuyCommand here.
+ * Write a description of class SellCommand here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class BuyCommand extends Command
+public class SellCommand extends Command
 {
     private CommandWords commandWords;
 
-    public BuyCommand()
+    public SellCommand()
     {
-        super("buy");
+        super("sell");
     }
 
     public boolean execute(Player player)
     {
-        // what do we buy
+        // what do we sell
         return false;
     }
 }

@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=NotificationCenter
+comment0.text=\r\n\ The\ Notification\ Center\ is\ designed\r\n\ after\ the\ NSNotificationCenter\ in\r\n\ Cocoa\ (MacOS)\r\n\r\n\ @author\ (Rodrigo\ A.\ Obando)\r\n\ @version\ (Fall\ 2018)\r\n
+comment1.params=
+comment1.target=NotificationCenter()
+comment1.text=\r\n\ Default\ Constructor\r\n\ It\ is\ private\ because\ it\ implements\ the\ Singleton\ pattern\r\n
+comment2.params=
+comment2.target=NotificationCenter\ getInstance()
+comment2.text=\r\n\ This\ is\ the\ method\ to\ gain\ access\r\n\ to\ the\ only\ instance\ of\ the\ class\r\n\ It\ uses\ lazy\ instantiation\r\n
+comment3.params=notificationName\ observer\ methodName
+comment3.target=void\ addObserver(java.lang.String,\ java.lang.Object,\ java.lang.String)
+comment3.text=\r\n\ Adds\ an\ observer\ for\ a\ given\ notification\ name\r\n
+comment4.params=notificationName\ observer\ methodName
+comment4.target=void\ queueAddObserver(java.lang.String,\ java.lang.Object,\ java.lang.String)
+comment4.text=\r\n\ Queues\ an\ add\ observer\ command\r\n
+comment5.params=notificationName\ observer\ methodName
+comment5.target=void\ removeObserver(java.lang.String,\ java.lang.Object,\ java.lang.String)
+comment5.text=\r\n\ Removes\ an\ observer\ for\ a\ given\ notification\ name\r\n
+comment6.params=notificationName\ observer\ methodName
+comment6.target=void\ queueRemoveObserver(java.lang.String,\ java.lang.Object,\ java.lang.String)
+comment6.text=\r\n\ Queues\ an\ add\ observer\ command\r\n
+comment7.params=
+comment7.target=void\ processQueue()
+numComments=8
