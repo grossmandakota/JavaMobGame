@@ -9,7 +9,7 @@ public class Item
 
 {
     private int numOfItem;
-    private int levelOfItem;
+    private int level;
     private int individualCost;
     private String name;
     /**
@@ -20,11 +20,26 @@ public class Item
         this(1, 1, "no name");
     }
     
-    public Item(int numOfItem, int levelOfItem, String name)
+    public Item(int numOfItem, int level, String name)
     {
         this.numOfItem = numOfItem;
-        this.levelOfItem = levelOfItem;
+        this.level = level;
         this.name = name;
+        
+        if(this.getName().equalsIgnoreCase("guns"))
+        {
+            this.setIndividualCost(200);
+        }
+        
+        if(this.getName().equalsIgnoreCase("drugs"))
+        {
+            this.setIndividualCost(20);
+        }
+        
+        if(this.getName().equalsIgnoreCase("armor"))
+        {
+            this.setIndividualCost(100);
+        }
     }
 
     public int getNumItem()
@@ -37,14 +52,14 @@ public class Item
         this.numOfItem = numOfItem;
     }
     
-    public int getLevelOfItem()
+    public int getLevel()
     {
-        return levelOfItem;
+        return level;
     }
     
-    public void setLevelOfItem(int levelOfItem)
+    public void setLevel(int level)
     {
-        this.levelOfItem = levelOfItem;
+        this.level = level;
     }
     
     public int getIndividualCost()
@@ -65,5 +80,31 @@ public class Item
     public void setName(String name)
     {
         this.name = name;
+    }
+    
+    public boolean isAcceptableItem()
+    {
+        if(this.getName().equalsIgnoreCase("guns") || this.getName().equalsIgnoreCase("drugs") || this.getName().equalsIgnoreCase("armor"))
+        {
+            return true;
+        }
+        
+        else
+        {
+            return false;
+        } 
+    }
+    
+    public void itemValueMultiplier()
+    {
+        if (this.getLevel() == 2)
+        {
+            this.setIndividualCost(this.getIndividualCost() + 25);
+        }
+        
+        if (this.getLevel() == 3)
+        {
+            this.setIndividualCost(this.getIndividualCost() + 50);
+        }
     }
 }

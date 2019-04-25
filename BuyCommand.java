@@ -38,20 +38,24 @@ public class BuyCommand extends Command
         {
             System.out.println("Input the name of the item you want to purchase.");
         }
-        
-        
+
         if(hasSecondWord() && hasThirdWord())
         {
-            if(player.getCurrentRoom() == hMapOfRooms.get("shop"))
+            if(boughtItem.isAcceptableItem())
             {
-                //
-            }
-            else
-            {
-                System.out.println("You can only make purchases in the trading district.");
+                if(player.getCurrentRoom() == hMapOfRooms.get("shop"))
+                {
+                    {
+                        player.setMoney(player.getMoney() - (boughtItem.getIndividualCost() * boughtItem.getNumItem()));
+                        player.addItem(boughtItem);
+                    }
+                }
+                else
+                {
+                    System.out.println("You can only make purchases in the trading district.");
+                }
             }
         }
-        
 
         return false;
     }
