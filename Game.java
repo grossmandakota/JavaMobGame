@@ -15,10 +15,12 @@
  */
 import java.io.*;
 import java.util.*;
+
 class Game 
 {
     private Parser parser; // reading commands from the user 
     private Player player;
+    private Door door;
 
     /**
      * Create the game and initialise its internal map.
@@ -29,7 +31,7 @@ class Game
         parser = new Parser();
     }
 
-    /*
+    
     public Room createWorld()
     {
     Room districtS = new Room("in the south district");
@@ -42,42 +44,42 @@ class Game
     Room districtN = new Room("in the north district");
     Room districtNW = new Room("in the northwest district");
 
-    districtS.setExit("west", districtSW);
-    districtS.setExit("east", districtSE);
-    districtS.setExit("north", shop);
+    // districtS.setExit("west", districtSW);
+    // districtS.setExit("east", districtSE);
+    // districtS.setExit("north", shop);
 
-    districtSE.setExit("west", districtS);
-    districtSE.setExit("north", districtE);
+    // districtSE.setExit("west", districtS);
+    // districtSE.setExit("north", districtE);
 
-    districtSW.setExit("east", districtS);
-    districtSW.setExit("north", districtW);
+    // districtSW.setExit("east", districtS);
+    // districtSW.setExit("north", districtW);
 
-    districtE.setExit("west", shop);
-    districtE.setExit("north", districtNE);
-    districtE.setExit("south", districtSE);
+    // districtE.setExit("west", shop);
+    // districtE.setExit("north", districtNE);
+    // districtE.setExit("south", districtSE);
 
-    districtW.setExit("east", shop);
-    districtW.setExit("north", districtNW);
-    districtW.setExit("south", districtSW);
+    // districtW.setExit("east", shop);
+    // districtW.setExit("north", districtNW);
+    // districtW.setExit("south", districtSW);
 
-    shop.setExit("south", districtS);
-    shop.setExit("north", districtN);
-    shop.setExit("east", districtE);
-    shop.setExit("west", districtW);
+    // shop.setExit("south", districtS);
+    // shop.setExit("north", districtN);
+    // shop.setExit("east", districtE);
+    // shop.setExit("west", districtW);
 
-    districtNE.setExit("west", districtN);
-    districtNE.setExit("south", districtE);
+    // districtNE.setExit("west", districtN);
+    // districtNE.setExit("south", districtE);
 
-    districtN.setExit("south", shop);
-    districtN.setExit("east", districtNE);
-    districtN.setExit("west", districtNW);
+    // districtN.setExit("south", shop);
+    // districtN.setExit("east", districtNE);
+    // districtN.setExit("west", districtNW);
 
-    districtNW.setExit("south", districtW);
-    districtNW.setExit("east", districtN);
+    // districtNW.setExit("south", districtW);
+    // districtNW.setExit("east", districtN);
 
     return districtS;
     }
-     */
+     /**
 
     /**
      *  Main play routine.  Loops until end of play.
@@ -103,6 +105,7 @@ class Game
             if(command == null) {
                 System.out.println("I don't understand...");
             } else {
+                player.beenThere.add(player.getCurrentRoom());
                 finished = command.execute(player);
                 System.out.println(player.getMoney());// quit return true
             }

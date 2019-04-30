@@ -6,10 +6,14 @@
  * @author Michael Kolling modified by Rodrigo A. Obando (2018)
  * @version 1.0 (December 2002)
  */
+import java.util.ArrayList;
+
 public class Player extends MobBoss
 {
     private Room currentRoom;
-
+    private Door door;
+    public ArrayList<Room> beenThere = new ArrayList<Room>();
+    
     /**
      * Constructor for objects of class Player
      */
@@ -31,6 +35,11 @@ public class Player extends MobBoss
         return currentRoom;
     }
     
+    // public ArrayList<Room> addBeenThere(Room room)
+    // {
+        // beenThere.add(getCurrentRoom());
+    // }
+    
     /**
      * Set the current room for this player.
      */
@@ -46,13 +55,52 @@ public class Player extends MobBoss
     public void walk(String direction)
     {
         // Try to leave current room.
-        Room nextRoom = currentRoom.getExit(direction);
+        Door door = currentRoom.getExit(direction);
 
-        if (nextRoom == null)
-            System.out.println("There is no door!");
+        if (door == null)
+            System.out.println("There is no door on " + direction);
         else {
+            if(door.isOpen())
+            {
+            Room nextRoom = door.getRoomFromTheOtherSideOf(getCurrentRoom());    
             setCurrentRoom(nextRoom);    //  this moves the player into another room
             System.out.println(nextRoom.getLongDescription());
         }
+        else {
+            System.out.println("The door on " + direction + " is closed.");
+        }
+        }
     }
+    
+    public void open(String direction)
+    {
+        Door door = currentRoom.getExit(direction);
+
+        if (door == null)
+            System.out.println("There is no door on " + direction);
+        else {
+            door.open();
+            System.out.println("The door on " + direction + " is open.");
+        }
+    
+    }
+    
+    // public boolean ownedByTony()
+    // {
+        // if(this.getDoor() == door1)
+        // {
+            // return true;
+        // }
+        // return false;
+    // }
+    
+    // public boolean ownedByJames()
+    // {
+        // return false;
+    // }
+    
+    // public boolean ownedByHenry()
+    // {
+        // return false;
+    // }
 }
