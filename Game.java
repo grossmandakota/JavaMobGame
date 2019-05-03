@@ -31,6 +31,10 @@ class Game
         parser = new Parser();
     }
 
+    public Stack<Room> getStack(Stack<Room> stack)
+    {
+        return stack;
+    }
     
     public Room createWorld()
     {
@@ -85,7 +89,7 @@ class Game
      *  Main play routine.  Loops until end of play.
      */
     public void play() 
-    {            
+    {         
         printWelcome();
 
         // if you want to manually start in a certain room
@@ -105,7 +109,7 @@ class Game
             if(command == null) {
                 System.out.println("I don't understand...");
             } else {
-                player.beenThere.add(player.getCurrentRoom());
+                player.stack.push(player.getCurrentRoom()); //adds to the rooms to the stack
                 finished = command.execute(player);
                 System.out.println(player.getMoney());// quit return true
             }

@@ -16,7 +16,7 @@ public class BackCommand extends Command
     public boolean execute(Player player)
     {
         if(getSecondWord() == null && getThirdWord() == null) {
-            player.setCurrentRoom(player.beenThere.lastIndexOf(Object()));
+            player.back(player);//stack push and pop
             return false;
         }
         else {

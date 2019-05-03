@@ -37,6 +37,12 @@ public class CommandWords
         commands.put(command.getName(), command);
         command = new ExtortCommand();
         commands.put(command.getName(), command);
+        command = new OpenCommand();
+        commands.put(command.getName(), command);
+        command = new BackCommand();
+        commands.put(command.getName(), command);
+        command = new UnlockCommand();
+        commands.put(command.getName(), command);
     }
 
     /**

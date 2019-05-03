@@ -23,6 +23,9 @@ public class MobBoss
     private boolean isAlive;
     private ArrayList<Room> ownedDistricts = new ArrayList<Room>();
     private ArrayList<Item> ownedItems = new ArrayList<Item>();
+    private MobBoss bossA;
+    private MobBoss bossB;
+    
     public MobBoss()
     {
         money = 0;
@@ -33,6 +36,8 @@ public class MobBoss
 
     public MobBoss(int money, int henchmen, int respect, String name)
     {
+        this.bossA = bossA;
+        this.bossB = bossB;
         this.name = name;
         this.money = money;
         this.henchmen = henchmen;
@@ -90,16 +95,31 @@ public class MobBoss
     {
         return this.ownedDistricts;
     }
-
+    
     public void addDistrict(Room room)
     {
         //System.out.println(room.getShortDescription());
         this.ownedDistricts.add(room);
+        room.setOwner(this);
     }
 
     public void removeDistrict(Room room)
     {
         this.ownedDistricts.remove(room);
+    }
+    
+    // check if you own the district and if not then if you have enough respect to open it
+    public MobBoss getBossFromTheOtherSideOf(MobBoss boss)
+    {
+
+        if(boss == bossA)
+        {
+            return bossB;
+        }
+        else
+        {
+            return bossA;
+        }
     }
 
     public void steal(MobBoss thief, String victimS, int amountToSteal)
@@ -120,14 +140,13 @@ public class MobBoss
         System.out.println("thief: " + thief.getMoney()+ "henchmen: "+ thief.getHenchmen() + "victim: " + hMapOfMB.get(victimS).getMoney());
     }
 
+    
     public void kill(MobBoss killer, String victimS)
     {
         HashMap<String, MobBoss> hMapOfMB = new HashMap<String, MobBoss>();//setup hashmap
         hMapOfMB = GameWorld.getInstance().getHMapOfMB();//setup hashmap
         if(hMapOfMB.get(victimS) !=null && (hMapOfMB.get(victimS).isAlive == true))//make sure the victim exists and isnt already dead
         {
-            //if(killer.getRespect() >= hMapOfMB.get(victimS).getRespect())
-            //{
                 killer.setMoney(killer.getMoney() + hMapOfMB.get(victimS).getMoney());//take all of their money
                 killer.setHenchmen((int)Math.round(killer.getHenchmen() + (hMapOfMB.get(victimS).getHenchmen() * .10)));//take victims money
                 hMapOfMB.get(victimS).isAlive = false;
@@ -145,10 +164,6 @@ public class MobBoss
                 }
                 System.out.println("player" + killer.getOwnedDistricts());//debug
                 System.out.println("victim" + hMapOfMB.get(victimS).getOwnedDistricts() + hMapOfMB.get(victimS).isAlive);
-            //}
-            //else {
-             //   System.out.println("You do not have enough respect to wack" + victimS);
-            //}
         }
 
         else
@@ -156,4 +171,5 @@ public class MobBoss
             System.out.println("MobBoss '" + victimS + "' was not found");
         }
     }
+    
 }
