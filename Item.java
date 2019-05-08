@@ -25,7 +25,6 @@ public class Item
         this.numOfItem = numOfItem;
         this.level = level;
         this.name = name;
-        
         if(this.getName().equalsIgnoreCase("guns"))
         {
             this.setIndividualCost(200);
@@ -84,8 +83,21 @@ public class Item
     
     public boolean isAcceptableItem()
     {
-        if(this.getName().equalsIgnoreCase("guns") || this.getName().equalsIgnoreCase("drugs") || this.getName().equalsIgnoreCase("armor"))
+        if(this.getName().equalsIgnoreCase("guns"))
         {
+            this.setIndividualCost(100);
+            return true;
+        }
+        
+        if (this.getName().equalsIgnoreCase("drugs"))
+        {
+            this.setIndividualCost(20);
+            return true;
+        }
+        
+        if (this.getName().equalsIgnoreCase("armor"))
+        {
+            this.setIndividualCost(50);
             return true;
         }
         
@@ -106,5 +118,10 @@ public class Item
         {
             this.setIndividualCost(this.getIndividualCost() + 50);
         }
+    }
+    
+    public String toString()
+    {
+        return this.getName();
     }
 }
