@@ -9,6 +9,7 @@
  * @author  Michael Kolling and David J. Barnes modified by Rodrigo A. Obando (2018)
  * @version 2.0 (December 2002)
  */
+import java.util.ArrayList;
 
 public abstract class Command
 {

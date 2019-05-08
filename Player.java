@@ -6,13 +6,14 @@
  * @author Michael Kolling modified by Rodrigo A. Obando (2018)
  * @version 1.0 (December 2002)
  */
-import java.util.ArrayList;
+import java.util.*;
 
 public class Player extends MobBoss
 {
     private Room currentRoom;
     private Door door;
-    public ArrayList<Room> beenThere = new ArrayList<Room>();
+    private MobBoss boss;
+    public Stack<Room> stack = new Stack<Room>();
     
     /**
      * Constructor for objects of class Player
@@ -34,11 +35,6 @@ public class Player extends MobBoss
     {
         return currentRoom;
     }
-    
-    // public ArrayList<Room> addBeenThere(Room room)
-    // {
-        // beenThere.add(getCurrentRoom());
-    // }
     
     /**
      * Set the current room for this player.
@@ -72,35 +68,90 @@ public class Player extends MobBoss
         }
     }
     
+    /*
+     * this method allows the player to open doors
+     * if they have enough respect. If the payer does and 
+     * if the player does not already own the district
+     * then the player can open the door
+     */
     public void open(String direction)
+    {
+        Door door = currentRoom.getExit(direction);
+
+        if (door == null)
+        {
+            System.out.println("There is no door on " + direction);
+        }
+        else {
+            if(door.openable(this))
+            {
+            ActionResult result = door.open();
+            switch(result)
+            {
+                case UNCHANGED_DONE:
+                System.out.println("The door on " + direction + " was already open.");
+                break;
+                case CHANGED_DONE:
+                System.out.println("The door on " + direction + " is open.");
+                break;
+                case UNCHANGED_NOTDONE:
+                System.out.println("The door on " + direction + " is still closed.");
+                break;
+            }
+        }
+        else 
+        {
+            System.out.println("You can not open the door. You have " + this.getRespect() + " respect and you need 700");
+        }
+        }  
+    }
+    
+    /*
+     * The player will be allowed to unlock 
+     * locked doors
+     */
+    public void Unlock(String direction)
     {
         Door door = currentRoom.getExit(direction);
 
         if (door == null)
             System.out.println("There is no door on " + direction);
         else {
-            door.open();
-            System.out.println("The door on " + direction + " is open.");
-        }
-    
+            LockDelegate theLock = door.getDelegate();
+            if(theLock != null)
+            {
+                ActionResult result = theLock.unlock();
+                switch(result)
+                {
+                    case UNCHANGED_DONE:
+                    System.out.println("The door on " + direction + " was already unlocked.");
+                    break;
+                    case CHANGED_DONE:
+                    System.out.println("The door on " + direction + " is unlocked.");
+                    break;
+                    case UNCHANGED_NOTDONE:
+                    System.out.println("The door on " + direction + " is still locked.");
+                    break;
+                }
+            }
+            else
+            {
+                System.out.println("The door on " + direction + " does not have a lock.");
+            }
+        }  
     }
     
-    // public boolean ownedByTony()
-    // {
-        // if(this.getDoor() == door1)
-        // {
-            // return true;
-        // }
-        // return false;
-    // }
-    
-    // public boolean ownedByJames()
-    // {
-        // return false;
-    // }
-    
-    // public boolean ownedByHenry()
-    // {
-        // return false;
-    // }
+    /*
+     * The player can go back to the 
+     * previous room 
+     * contains one bug/feature!
+     * Even though it sets current room it does not acually set it
+     */
+    public void back(Player player)
+    {
+    Room Croom = stack.pop();    
+    player.setCurrentRoom(Croom);
+    //System.out.println(player.getCurrentRoom().getLongDescription());
+    System.out.println(stack.pop().getLongDescription());
+    }
 }

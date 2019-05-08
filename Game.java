@@ -15,7 +15,7 @@
  */
 import java.io.*;
 import java.util.*;
-
+   
 class Game 
 {
     private Parser parser; // reading commands from the user 
@@ -48,39 +48,6 @@ class Game
     Room districtN = new Room("in the north district");
     Room districtNW = new Room("in the northwest district");
 
-    // districtS.setExit("west", districtSW);
-    // districtS.setExit("east", districtSE);
-    // districtS.setExit("north", shop);
-
-    // districtSE.setExit("west", districtS);
-    // districtSE.setExit("north", districtE);
-
-    // districtSW.setExit("east", districtS);
-    // districtSW.setExit("north", districtW);
-
-    // districtE.setExit("west", shop);
-    // districtE.setExit("north", districtNE);
-    // districtE.setExit("south", districtSE);
-
-    // districtW.setExit("east", shop);
-    // districtW.setExit("north", districtNW);
-    // districtW.setExit("south", districtSW);
-
-    // shop.setExit("south", districtS);
-    // shop.setExit("north", districtN);
-    // shop.setExit("east", districtE);
-    // shop.setExit("west", districtW);
-
-    // districtNE.setExit("west", districtN);
-    // districtNE.setExit("south", districtE);
-
-    // districtN.setExit("south", shop);
-    // districtN.setExit("east", districtNE);
-    // districtN.setExit("west", districtNW);
-
-    // districtNW.setExit("south", districtW);
-    // districtNW.setExit("east", districtN);
-
     return districtS;
     }
      /**
@@ -91,17 +58,6 @@ class Game
     public void play() 
     {         
         printWelcome();
-
-        // if you want to manually start in a certain room
-        // Command tempCommand = new GoCommand();
-        // tempCommand.setSecondWord("west");
-        // tempCommand.execute(player);
-
-        //if you made the funtion pasreString in parser
-        //parser.parseString("go west").execute(player);
-
-        // Enter the main command loop.  Here we repeatedly read commands and
-        // execute them until the game is over.
 
         boolean finished = false;
         while(! finished) {

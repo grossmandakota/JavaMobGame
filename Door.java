@@ -36,7 +36,7 @@ public class Door
         {
             return true;
         }
-        else if(player1.getRespect() < 600)
+        else if(player1.getRespect() < 700)
         {
             return false;
         }

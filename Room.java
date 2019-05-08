@@ -18,8 +18,11 @@ import java.util.HashMap;
 class Room 
 {
     private String description;
-    private HashMap<String, Room> exits;        // stores exits of this room.
+    private HashMap<String, Door> exits;        // stores exits of this room.
     private boolean isPlayerHere;
+    private RoomDelegate delegate;
+    private MobBoss owner;
+    
     /**
      * Create a room described "description". Initially, it has no exits.
      * "description" is something like "in a kitchen" or "in an open court 
@@ -28,9 +31,22 @@ class Room
     public Room(String description) 
     {
         this.description = description;
-        exits = new HashMap<String, Room>();
+        exits = new HashMap<String, Door>();
+        owner = null;
+    }
+    
+    public MobBoss getOwner() {
+        return owner;
+    }
+    
+    public void setOwner(MobBoss owner) {
+        this.owner = owner;
     }
 
+    /*
+     * Returns weather the player is in 
+     * the room or not
+     */
     public void isPlayerInRoom(Player player)
     {
         if (this == player.getCurrentRoom()){
@@ -46,9 +62,9 @@ class Room
     /**
      * Define an exit from this room.
      */
-    public void setExit(String direction, Room neighbor) 
+    public void setExit(String direction, Door door) 
     {
-        exits.put(direction, neighbor);
+        exits.put(direction, door);
     }
 
     /**
@@ -88,7 +104,7 @@ class Room
      * Return the room that is reached if we go from this room in direction
      * "direction". If there is no room in that direction, return null.
      */
-    public Room getExit(String direction) 
+    public Door getExit(String direction) 
     {
         return exits.get(direction);
     }

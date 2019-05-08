@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Command
-comment0.text=\r\n\ This\ class\ is\ an\ abstract\ superclass\ for\ all\ command\ classes\ in\ the\ game.\r\n\ Each\ user\ command\ is\ implemented\ by\ a\ specific\ command\ subclass.\r\n\r\n\ Objects\ of\ class\ Command\ can\ store\ an\ optional\ argument\ word\ (a\ second\r\n\ word\ entered\ on\ the\ command\ line).\ If\ the\ command\ had\ only\ one\ word,\ \r\n\ then\ the\ second\ word\ is\ <null>.\r\n\ \r\n\ @author\ \ Michael\ Kolling\ and\ David\ J.\ Barnes\ modified\ by\ Rodrigo\ A.\ Obando\ (2018)\r\n\ @version\ 2.0\ (December\ 2002)\r\n
 comment1.params=name
 comment1.target=Command(java.lang.String)
 comment1.text=\r\n\ Create\ a\ command\ object.\ First\ and\ second\ word\ must\ be\ supplied,\ but\r\n\ either\ one\ (or\ both)\ can\ be\ null.\ The\ command\ word\ should\ be\ null\ to\r\n\ indicate\ that\ this\ was\ a\ command\ that\ is\ not\ recognised\ by\ this\ game.\r\n

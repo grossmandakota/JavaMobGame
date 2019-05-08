@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=RegularLock
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ RegularLock\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=RegularLock()
+comment2.params=doorA
+comment2.target=void\ setDoor(Door)
+comment3.params=
+comment3.target=boolean\ isLocked()
+comment4.params=
+comment4.target=boolean\ isUnlocked()
+comment5.params=
+comment5.target=ActionResult\ lock()
+comment6.params=
+comment6.target=ActionResult\ unlock()
+comment7.params=
+comment7.target=boolean\ mayOpen()
+comment7.text=\r\n\ to\ see\ if\ the\ player\ can\ open\ the\ door\r\n\ false\=locked\ true\=unlocked\r\n
+comment8.params=
+comment8.target=boolean\ mayClose()
+comment8.text=\ This\ method\ allows\ the\ player\ to\ see\ \r\n\ \ if\ they\ are\ able\ to\ close\ the\ door.\r\n\ \ The\ only\ case\ that\ is\ cannot\ is\ if\ the\ door\ has\ a\ deadbolt\r\n
+numComments=9

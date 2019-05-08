@@ -12,6 +12,7 @@ public class GameWorld
 {
     private static GameWorld instance;
     private Room entrance;
+    private Door door;
     private HashMap<String, MobBoss> hMapOfMB = new HashMap<String, MobBoss>();
     private HashMap<String, Room> hMapOfRooms = new HashMap<String, Room>();
     /**
@@ -27,6 +28,11 @@ public class GameWorld
     public Room getEntrance()
     {
         return entrance;
+    }
+    
+    public Door getDoor()
+    {
+        return this.door;
     }
 
     public HashMap<String, MobBoss> getHMapOfMB()
@@ -59,40 +65,44 @@ public class GameWorld
         Room districtNE = new Room("in the northeast district");
         Room districtN = new Room("in the north district");
         Room districtNW = new Room("in the northwest district");
-
-        districtS.setExit("west", districtSW);
-        districtS.setExit("east", districtSE);
-        districtS.setExit("north", shop);
-
-        districtSE.setExit("west", districtS);
-        districtSE.setExit("north", districtE);
-
-        districtSW.setExit("east", districtS);
-        districtSW.setExit("north", districtW);
-
-        districtE.setExit("west", shop);
-        districtE.setExit("north", districtNE);
-        districtE.setExit("south", districtSE);
-
-        districtW.setExit("east", shop);
-        districtW.setExit("north", districtNW);
-        districtW.setExit("south", districtSW);
-
-        shop.setExit("south", districtS);
-        shop.setExit("north", districtN);
-        shop.setExit("east", districtE);
-        shop.setExit("west", districtW);
-
-        districtNE.setExit("west", districtN);
-        districtNE.setExit("south", districtE);
-
-        districtN.setExit("south", shop);
-        districtN.setExit("east", districtNE);
-        districtN.setExit("west", districtNW);
-
-        districtNW.setExit("south", districtW);
-        districtNW.setExit("east", districtN);
-
+        
+        
+        Door door1 = Door.makeDoor(districtS, districtSW, "west", "east");  // tony's door
+        door1.close();
+        
+        Door door2 = Door.makeDoor(districtSE, districtS, "west", "east"); // tony'e door
+        door2.close();
+        RegularLock aLock = new RegularLock();
+        door2.setDelegate(aLock);
+        aLock.lock();
+        
+        Door door3 = Door.makeDoor(shop, districtS, "south", "north"); // stays open
+        
+        Door door4 = Door.makeDoor(districtSE, districtE, "north", "south"); // james door
+        door4.close();
+        
+        Door door5 = Door.makeDoor(districtSW, districtW, "north", "south"); // james door
+        door5.close();
+        
+        Door door6 = Door.makeDoor(districtE, shop, "west", "east");  // james door
+        door6.close();
+        
+        Door door7 = Door.makeDoor(districtE, districtNE, "north", "south"); // henry's door
+        door7.close();
+        
+        Door door8 = Door.makeDoor(districtW, shop, "east", "west"); // james door
+        door8.close();
+        
+        Door door9 = Door.makeDoor(districtW, districtNW, "north", "south"); // henry's door
+        door9.close();
+        
+        Door door10 = Door.makeDoor(shop, districtN, "north", "south"); // henry's door
+        door10.close();
+        
+        Door door11 = Door.makeDoor(districtNE, districtN, "west", "east"); // stays open
+        
+        Door door12 = Door.makeDoor(districtN, districtNW, "west", "east"); // stays open
+        
         hMapOfRooms.put("districtS", districtS);
         hMapOfRooms.put("districtSE", districtSE);
         hMapOfRooms.put("districtSW", districtSW);

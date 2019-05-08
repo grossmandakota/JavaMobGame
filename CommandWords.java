@@ -27,10 +27,6 @@ public class CommandWords
         commands.put(command.getName(), command);
         command = new QuitCommand();
         commands.put(command.getName(), command);
-        command = new LoadCommand();
-        commands.put(command.getName(), command);
-        command = new SaveCommand();
-        commands.put(command.getName(), command);
         command = new WackCommand();
         commands.put(command.getName(), command);
         command = new BuyCommand();
@@ -40,8 +36,6 @@ public class CommandWords
         command = new OpenCommand();
         commands.put(command.getName(), command);
         command = new BackCommand();
-        commands.put(command.getName(), command);
-        command = new UnlockCommand();
         commands.put(command.getName(), command);
     }
 

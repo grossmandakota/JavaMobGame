@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=BackCommand
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ BackCommand\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=BackCommand()
+comment2.params=player
+comment2.target=boolean\ execute(Player)
+comment2.text=\r\n\ This\ allows\ the\ player\ to\ go\ back\ to\ the\ \r\n\ previous\ room\ \r\n
+numComments=3

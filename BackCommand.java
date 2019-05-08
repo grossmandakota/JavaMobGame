@@ -13,6 +13,10 @@ public class BackCommand extends Command
         super("back");
     }
 
+    /*
+     * This allows the player to go back to the 
+     * previous room 
+     */
     public boolean execute(Player player)
     {
         if(getSecondWord() == null && getThirdWord() == null) {
