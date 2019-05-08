@@ -45,15 +45,29 @@ public class BuyCommand extends Command
             {
                 if(player.getCurrentRoom() == hMapOfRooms.get("shop"))
                 {
+                    if(player.hasEnough(boughtItem.getIndividualCost() * boughtItem.getNumItem(), 0, 0))
                     {
-                        player.setMoney(player.getMoney() - (boughtItem.getIndividualCost() * boughtItem.getNumItem()));
-                        player.addItem(boughtItem);
+
+                        {
+                            player.setMoney(player.getMoney() - (boughtItem.getIndividualCost() * boughtItem.getNumItem()));
+                            player.addItem(boughtItem);
+                            player.printStringOf();
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("You don't have enough money for that.");
                     }
                 }
                 else
                 {
                     System.out.println("You can only make purchases in the trading district.");
                 }
+            }
+
+            else
+            {
+                System.out.println("That ain't it");
             }
         }
 
