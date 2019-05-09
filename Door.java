@@ -30,19 +30,24 @@ public class Door
         return this;
     }
     
+    /*
+     * returns true if the player can open the door
+     * or owns the district
+     * returns false if the player does not have enough respect
+     */
     public boolean openable(Player player1)
     {
        if(getRoomFromTheOtherSideOf(player1.getCurrentRoom()).getOwner() == player1)
         {
             return true;
         }
-        else if(player1.getRespect() < 700)
+        else if(player1.hasEnough(0, 700, 0)) //loosely coupled 
         {
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
     }
 

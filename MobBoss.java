@@ -158,6 +158,7 @@ public class MobBoss
             return false;
         }
     }
+    
     public void steal(MobBoss thief, String victimS, int amountToSteal)
     {
         HashMap<String, MobBoss> hMapOfMB = new HashMap<String, MobBoss>();//setup hashmap
@@ -183,10 +184,12 @@ public class MobBoss
         hMapOfMB = GameWorld.getInstance().getHMapOfMB();//setup hashmap
         if(hMapOfMB.get(victimS) !=null && (hMapOfMB.get(victimS).isAlive == true))//make sure the victim exists and isnt already dead
         {
-            //if(killer.getRespect() >= hMapOfMB.get(victimS).getRespect())
-            //{
+            if(killer.hasEnough(0, 800,40))
+            {
                 killer.setMoney(killer.getMoney() + hMapOfMB.get(victimS).getMoney());//take all of their money
-                killer.setHenchmen((int)Math.round(killer.getHenchmen() + (hMapOfMB.get(victimS).getHenchmen() * .10)));//take victims money
+                killer.setHenchmen((int)Math.round(killer.getHenchmen() + (hMapOfMB.get(victimS).getHenchmen() * .10)));//take victims henchmen
+                killer.setHenchmen(killer.getHenchmen() - 10); // the henchmen who died in the process
+                killer.setRespect(killer.getRespect() - 200); // you will loose respect if you wack a MobBoss
                 hMapOfMB.get(victimS).isAlive = false;
                 hMapOfMB.get(victimS).money = 0;
                 hMapOfMB.get(victimS).respect = 0;
@@ -202,10 +205,10 @@ public class MobBoss
                 }
                 System.out.println("player" + killer.getOwnedDistricts());//debug
                 System.out.println("victim" + hMapOfMB.get(victimS).getOwnedDistricts() + hMapOfMB.get(victimS).isAlive);
-            //}
-            //else {
-                //System.out.println("You do not have enough respect to wack" + victimS);
-            //}
+            }
+            else {
+                System.out.println("You do not have enough respect or henchmen to wack " + victimS);
+             }
             }
 
         else

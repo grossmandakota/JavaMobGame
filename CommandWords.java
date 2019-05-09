@@ -31,7 +31,7 @@ public class CommandWords
         commands.put(command.getName(), command);
         command = new BuyCommand();
         commands.put(command.getName(), command);
-        command = new ExtortCommand();
+        command = new RobCommand();
         commands.put(command.getName(), command);
         command = new OpenCommand();
         commands.put(command.getName(), command);
