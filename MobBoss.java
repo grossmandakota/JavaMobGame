@@ -101,6 +101,8 @@ public class MobBoss
     {
         for(int i = 0; i < this.ownedItems.size(); i++)
         {
+            //if the item name is already in the list, it just adds to the number of items
+            //instead of creating a new one
             if(item.getName().equals(this.ownedItems.get(i).getName()))
             {
                 item.setNumItem(item.getNumItem() + this.ownedItems.get(i).getNumItem());
@@ -158,7 +160,6 @@ public class MobBoss
             return false;
         }
     }
-    
     public void steal(MobBoss thief, String victimS, int amountToSteal)
     {
         HashMap<String, MobBoss> hMapOfMB = new HashMap<String, MobBoss>();//setup hashmap
@@ -195,16 +196,24 @@ public class MobBoss
                 hMapOfMB.get(victimS).respect = 0;
                 hMapOfMB.get(victimS).henchmen = 0;
                 //System.out.println(killer.getMoney());
-                System.out.println("player before" + killer.getOwnedDistricts());//debug
-                System.out.println("victim before" + hMapOfMB.get(victimS).getOwnedDistricts() + hMapOfMB.get(victimS).getOwnedDistricts().size());//debug
+                System.out.println("player before: ");//debug
+                for(int i = 0; i < killer.getOwnedDistricts().size(); i++)
+                {
+                    System.out.print(killer.getOwnedDistricts().get(i).getShortDescription() + ", ");
+                }
+                //System.out.println("victim before" + hMapOfMB.get(victimS).getOwnedDistricts() + hMapOfMB.get(victimS).getOwnedDistricts().size());//debug
                 for(int i = 0; i< hMapOfMB.get(victimS).getOwnedDistricts().size(); i++)//loop to transfer all disticts the victim owned to the player
                 {
                     killer.addDistrict(hMapOfMB.get(victimS).getOwnedDistricts().get(i));//give districts to player
                     hMapOfMB.get(victimS).removeDistrict(hMapOfMB.get(victimS).getOwnedDistricts().get(i));//take them away from the victim
                     i=i-1;//hack to counteract the list size changing 
                 }
-                System.out.println("player" + killer.getOwnedDistricts());//debug
-                System.out.println("victim" + hMapOfMB.get(victimS).getOwnedDistricts() + hMapOfMB.get(victimS).isAlive);
+                System.out.println("player now: ");
+                for(int i = 0; i < killer.getOwnedDistricts().size(); i++)
+                {
+                    System.out.print(killer.getOwnedDistricts().get(i).getShortDescription() + ", ");
+                }
+                //System.out.println("victim" + hMapOfMB.get(victimS).getOwnedDistricts() + hMapOfMB.get(victimS).isAlive);
             }
             else {
                 System.out.println("You do not have enough respect or henchmen to wack " + victimS);
