@@ -21,10 +21,10 @@ public class BuyCommand extends Command
         HashMap<String, Room> hMapOfRooms = new HashMap<String, Room>();//setup hashmap
         hMapOfRooms = GameWorld.getInstance().getHMapOfRooms();
         Item boughtItem = new Item();
-        int secondWordInt = Integer.parseInt(getSecondWord());
+        int secondWordInt = Integer.parseInt(getSecondWord());//number of items being sold
         if(hasSecondWord())
         {
-            boughtItem.setNumItem(secondWordInt);
+            boughtItem.setNumItem(secondWordInt); //sets second word to number of item
         }
         else
         {
@@ -32,7 +32,7 @@ public class BuyCommand extends Command
         }
         if(hasThirdWord())
         {
-            boughtItem.setName(getThirdWord());
+            boughtItem.setName(getThirdWord()); //sets third word to name of item
         }
         else
         {
@@ -41,18 +41,18 @@ public class BuyCommand extends Command
 
         if(hasSecondWord() && hasThirdWord())
         {
-            if(boughtItem.isAcceptableItem())
+            if(boughtItem.isAcceptableItem())//if the item is part of acceptable item choices
             {
-                if(player.getCurrentRoom() == hMapOfRooms.get("shop"))
+                if(player.getCurrentRoom() == hMapOfRooms.get("shop")) //if you're in the shop
                 {
-                    if(player.hasEnough(boughtItem.getIndividualCost() * boughtItem.getNumItem(), 0, 0))
+                    if(player.hasEnough(boughtItem.getIndividualCost() * boughtItem.getNumItem(), 0, 0)) //if the player has enough money
                     {
-                        if(player.checkWeight())
+                        if(player.checkWeight()) //if player weight is right
                         {
                             {
-                                player.setMoney(player.getMoney() - (boughtItem.getIndividualCost() * boughtItem.getNumItem()));
-                                player.addItem(boughtItem);
-                                player.printStringOf();
+                                player.setMoney(player.getMoney() - (boughtItem.getIndividualCost() * boughtItem.getNumItem())); //set player money
+                                player.addItem(boughtItem); //adds item/number of item
+                                player.printStringOf(); //prints out items player owns now
                             }
                         }
                         else
@@ -73,7 +73,7 @@ public class BuyCommand extends Command
 
             else
             {
-                System.out.println("That ain't it");
+                System.out.println("Choose an acceptable item.");
             }
         }
 

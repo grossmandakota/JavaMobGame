@@ -146,9 +146,10 @@ public class MobBoss
     {
         for(int i = 0; i < this.getOwnedItems().size(); i++)
         {
+            //adds weight for each item in the players OwnedItems arrayList
             weight = weight + this.getOwnedItems().get(i).getNumItem();
         }
-        
+        //flag for weight
         if(weight < 1000)
         {
             return true;
@@ -158,6 +159,16 @@ public class MobBoss
         {
             return false;
         }
+    }
+    
+    public int getWeight()
+    {
+        return this.weight;
+    }
+    
+    public void setWeight(int weight)
+    {
+        this.weight = weight;
     }
   
     // check if you own the district and if not then if you have enough respect to open it
@@ -173,29 +184,11 @@ public class MobBoss
             return bossA;
         }
     }
-
+    
+    //this method is simply  a flag to check and see if you have enough of whatever to do whatever command you're trying to do 
      public boolean hasEnough(int money, int respect, int henchmen)
     {
-        if(henchmen > 0)
-        {
-            for(int i = 0; i < this.getOwnedItems().size(); i++)
-            {
-                if(this.getOwnedItems().get(i).getName().equalsIgnoreCase("guns"))
-                {
-                    Item guns = this.getOwnedItems().get(i);
-                    if(guns.getNumItem() < henchmen)
-                        {
-                            System.out.println("You need as many guns as you have henchmen to complete this task.");
-                            return false;
-                        }
-                    else if (guns.getNumItem() >= henchmen && this.getMoney() >= money && this.getRespect() >= respect && this.getHenchmen() >= henchmen)
-                    {
-                        return true;
-                    }
-                }
-        }
-    }
-        if(this.getMoney() >= money && this.getRespect() >= respect && this.getHenchmen() >= henchmen)
+        if(this.getMoney() >= money && this.getRespect() >= respect && this.getHenchmen() >= henchmen)//if the requirements in the parameters are met by the player it returns true
         {
             return true;
         }
@@ -211,11 +204,12 @@ public class MobBoss
         Random rand = new Random();
         int randNum = rand.nextInt(3);
         if(player.hasEnough(0, 0, 50)){
-                if(randNum == 0 || randNum == 2)
+                if(randNum == 0 || randNum == 2) // there is a 2/3rd chance the robbery goes right.
                 {
-                    dMoney = (int)(player.getMoney()*(10.0f/100.0f));
+                    dMoney = (int)(player.getMoney()*(10.0f/100.0f)); // player takes 10% of their money they have.
                     player.setMoney(player.getMoney() + dMoney);
                     player.setRespect(player.getRespect() + 100);
+                    System.out.println("The robbery was successful. You stole $" + dMoney + "and gained 100 respect.");
                 }
                 if(randNum == 1){
                     player.setHenchmen(player.getHenchmen() - 10);
@@ -223,8 +217,8 @@ public class MobBoss
                     System.out.println("You now have " + player.getHenchmen() + " henchmen");
                     System.out.println("and you still have " + player.getMoney() + " money");
                 }
-    }
-    else{
+            }
+        else{
                 System.out.println("You do not have enought henchmen to rob! You need 50 and you have " + player.getHenchmen());
             }
 }
@@ -282,7 +276,7 @@ public class MobBoss
     {
         for(int i = 0; i < this.ownedItems.size(); i++)
         {
-            System.out.println(this.ownedItems.get(i).getName() + " " + this.ownedItems.get(i).getNumItem());
+            System.out.println(this.ownedItems.get(i).getName() + " " + this.ownedItems.get(i).getNumItem()); //prints out item player owns and number of that item.
         }
     }
     

@@ -26,10 +26,10 @@ public class InfoCommand extends Command
             System.out.println("Owned Districts: ");
             for(int i = 0; i < player.getOwnedDistricts().size(); i++)
             {
-                System.out.print(player.getOwnedDistricts().get(i).getShortDescription() + ", ");
+                System.out.print(player.getOwnedDistricts().get(i).getShortDescription() + ", ");//prints out the name of each district that the player owns seperated by a comma
             }
             System.out.println("\nItems owned: ");
-            player.printStringOf();
+            player.printStringOf(); //prints out items player owns.
             System.out.println("Player respect: " + player.getRespect() + " player money: " + player.getMoney() + " player henchmen: " + player.getHenchmen());
         }
         return false;

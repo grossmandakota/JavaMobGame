@@ -33,6 +33,11 @@ public class SellCommand extends Command
                 {
                     //item count for player decreases depending on how many you sold
                     tempItem.setNumItem(tempItem.getNumItem() - secondWordInt);
+                    player.setWeight(player.getWeight() - tempItem.getNumItem());//removes weight from player when item is sold.
+                    if(player.getWeight() < 0)
+                    {
+                        player.setWeight(0);
+                    }
                     //if there are 0 items
                     if(tempItem.getNumItem() < 0)
                     {
