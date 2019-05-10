@@ -30,11 +30,6 @@ class Game
         player = new Player(GameWorld.getInstance().getEntrance());
         parser = new Parser();
     }
-
-    public Stack<Room> getStack(Stack<Room> stack)
-    {
-        return stack;
-    }
     
     public Room createWorld()
     {
@@ -58,7 +53,7 @@ class Game
     public void play() 
     {         
         printWelcome();
-
+        
         boolean finished = false;
         while(! finished) {
             Command command = parser.getCommand();
@@ -67,9 +62,13 @@ class Game
             } else {
                 player.stack.push(player.getCurrentRoom()); //adds to the rooms to the stack
                 finished = command.execute(player);
-                System.out.println(player.getMoney());// quit return true
+                if(GameWorld.getInstance().getHMapOfMB().get("Tony").getIsAlive() == false && GameWorld.getInstance().getHMapOfMB().get("James").getIsAlive() == false && GameWorld.getInstance().getHMapOfMB().get("Henry").getIsAlive() == false)
+        {
+            finished = true;
+        }
             }
         }
+        System.out.println("You have won! You are now the Mob Boss!");
         System.out.println("Thank you for playing.  Good bye.");
     }
 

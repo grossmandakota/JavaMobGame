@@ -41,6 +41,8 @@ public class CommandWords
         commands.put(command.getName(), command);
         command = new RobCommand();
         commands.put(command.getName(), command);
+        command = new RecruitCommand();
+        commands.put(command.getName(), command);
     }
 
     /**
