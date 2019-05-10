@@ -25,10 +25,11 @@ public class RobCommand extends Command
      */
     public boolean execute(Player player)
     {
-       Random rand = new Random();
+        Random rand = new Random();
         int randNum = rand.nextInt(3);
         if(hasSecondWord())
         {
+            if(player.hasEnough(0, 0, 50)){
                 if(randNum == 0 || randNum == 2)
                 {
                     dMoney = (int)(player.getMoney()*(10.0f/100.0f));
@@ -41,9 +42,13 @@ public class RobCommand extends Command
                     System.out.println("You now have " + player.getHenchmen() + "henchmen");
                     System.out.println("and you still have " + player.getMoney() + "money");
                 }
+            }
+            else{
+                System.out.println("You do not have enought henchmen to rob! You need 50 and you have " + player.getHenchmen());
+            }
         }
         else {
-        System.out.println("Rob what?");
+            System.out.println("Rob what?");
         }
         return false;
     }
