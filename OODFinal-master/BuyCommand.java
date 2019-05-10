@@ -47,11 +47,17 @@ public class BuyCommand extends Command
                 {
                     if(player.hasEnough(boughtItem.getIndividualCost() * boughtItem.getNumItem(), 0, 0))
                     {
-
+                        if(player.checkWeight())
                         {
-                            player.setMoney(player.getMoney() - (boughtItem.getIndividualCost() * boughtItem.getNumItem()));
-                            player.addItem(boughtItem);
-                            player.printStringOf();
+                            {
+                                player.setMoney(player.getMoney() - (boughtItem.getIndividualCost() * boughtItem.getNumItem()));
+                                player.addItem(boughtItem);
+                                player.printStringOf();
+                            }
+                        }
+                        else
+                        {
+                            System.out.println("You're carrying too much. Sell some things and keep your number of items below 1000.");
                         }
                     }
                     else

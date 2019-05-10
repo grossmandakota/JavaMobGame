@@ -22,6 +22,7 @@ public class MobBoss
     private int respect;
     private int henchmen;
     private boolean isAlive;
+    private int weight;
     private ArrayList<Room> ownedDistricts = new ArrayList<Room>();
     private ArrayList<Item> ownedItems = new ArrayList<Item>();
     private MobBoss bossA;
@@ -44,6 +45,7 @@ public class MobBoss
         this.henchmen = henchmen;
         this.respect = respect;
         this.name = name;
+        this.weight = 0;
         isAlive = true;
     }
 
@@ -117,6 +119,23 @@ public class MobBoss
         this.ownedItems.remove(item);
     }
 
+    public boolean checkWeight()
+    {
+        for(int i = 0; i < this.getOwnedItems().size(); i++)
+        {
+            weight = weight + this.getOwnedItems().get(i).getNumItem();
+        }
+        
+        if(weight < 1000)
+        {
+            return true;
+        }
+            
+        else
+        {
+            return false;
+        }
+    }
     public ArrayList<Room> getOwnedDistricts()
     {
         return this.ownedDistricts;
