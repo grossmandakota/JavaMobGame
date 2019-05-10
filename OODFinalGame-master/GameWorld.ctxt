@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=GameWorld
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ GameWorld\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=GameWorld()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GameWorld\r\n
+comment2.params=
+comment2.target=Room\ getEntrance()
+comment3.params=
+comment3.target=Door\ getDoor()
+comment4.params=
+comment4.target=java.util.HashMap\ getHMapOfMB()
+comment5.params=
+comment5.target=java.util.HashMap\ getHMapOfRooms()
+comment5.text=\r\n\ allows\ access\ to\ the\ private\ hashMap\r\n\ when\ called\ it\ returns\ the\ hashMap\r\n
+comment6.params=
+comment6.target=GameWorld\ getInstance()
+comment6.text=\r\n\ creates\ a\ new\ game\ world\ if\ the\ instance\ is\ null\r\n
+comment7.params=
+comment7.target=Room\ createWorld()
+comment7.text=\r\n\ creates\ world\ by\ making\ rooms\ that\ are\ called\ districts\ and\ then\r\n\ making\ doors\ between\ the\ districts\r\n
+comment8.params=
+comment8.target=java.util.HashMap\ createMobBosses()
+comment8.text=\r\n\ creates\ a\ hashMap\ of\ mobBosses\ with\ their\ money,\ henchmen\ and\ respect.\r\n\ It\ also\ adds\ ownership\ when\ calling\ the\ addDistrict\ method\r\n
+numComments=9

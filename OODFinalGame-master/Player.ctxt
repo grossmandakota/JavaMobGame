@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Player
+comment1.params=startingRoom
+comment1.target=Player(Room)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Player\r\n
+comment2.params=
+comment2.target=Room\ getCurrentRoom()
+comment2.text=\r\n\ Return\ the\ current\ room\ for\ this\ player.\r\n
+comment3.params=room
+comment3.target=void\ setCurrentRoom(Room)
+comment3.text=\r\n\ Set\ the\ current\ room\ for\ this\ player.\r\n
+comment4.params=direction
+comment4.target=void\ walk(java.lang.String)
+comment4.text=\r\n\ Try\ to\ walk\ in\ a\ given\ direction.\ If\ there\ is\ a\ door\r\n\ this\ will\ change\ the\ player's\ location.\r\n
+comment5.params=direction
+comment5.target=void\ open(java.lang.String)
+comment5.text=\r\n\ this\ method\ allows\ the\ player\ to\ open\ doors\r\n\ if\ they\ have\ enough\ respect.\ If\ the\ payer\ does\ and\ \r\n\ if\ the\ player\ does\ not\ already\ own\ the\ district\r\n\ then\ the\ player\ can\ open\ the\ door\r\n
+comment6.params=player
+comment6.target=void\ back(Player)
+comment6.text=\r\n\ The\ player\ can\ go\ back\ to\ the\ \r\n\ previous\ room\ \r\n\ contains\ one\ bug/feature\!\r\n\ Even\ though\ it\ sets\ current\ room\ it\ does\ not\ acually\ set\ it\r\n
+numComments=7
