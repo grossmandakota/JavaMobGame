@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=RoomDelegate
+comment1.params=direction\ door
+comment1.target=void\ setExit(java.lang.String,\ Door)
+comment2.params=
+comment2.target=java.lang.String\ getShortDescription()
+comment3.params=
+comment3.target=java.lang.String\ getlLongDescription()
+comment4.params=
+comment4.target=java.lang.String\ getExitString()
+comment5.params=direction
+comment5.target=Door\ getExit(java.lang.String)
+comment6.params=exits
+comment6.target=void\ setExits(java.util.HashMap)
+comment7.params=room
+comment7.target=void\ setRoom(Room)
+numComments=8

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=RobCommand
+comment1.params=
+comment1.target=RobCommand()
+comment2.params=player
+comment2.target=boolean\ execute(Player)
+comment2.text=\r\n\ This\ allows\ the\ player\ to\ rob\ districts.\r\n\ This\ adds\ money\ and\ respect\ to\ the\ player.\r\n\ Careful,\ you\ can\ loose\ henchmen\ in\ a\ random\ chance\ that\ \r\n\ everything\ goes\ sour\r\n
+numComments=3
